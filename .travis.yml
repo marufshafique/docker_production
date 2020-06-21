@@ -1,0 +1,10 @@
+sudo: requierd
+
+service:
+  - docker
+
+before_install:
+  - docker build -t maruf/docker-production -f Dockerfile.dev .
+
+script:
+  - docker run maruf/docker-production npm run test -- --coverage
